@@ -1,6 +1,6 @@
-# base_project
+# Base-Project-Flutter
 
-A new Flutter project.
+This app created with Flutter version 2.10.4 with case study about Find Your Dream Job App
 
 ## Getting Started
 
@@ -15,4 +15,5 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-This app created with Flutter version 2.10.4
+Soon to be:
+- Implementation of Bloc for State Management 
