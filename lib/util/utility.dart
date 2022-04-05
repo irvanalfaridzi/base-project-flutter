@@ -1,3 +1,4 @@
+import 'package:base_project/util/constant.dart';
 import 'package:dio/dio.dart';
 
 class Utility {

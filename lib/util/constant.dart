@@ -19,4 +19,5 @@ class Constant {
 
   //PATH ENDPOINT
   static const String singleUser = 'users/';
+  static const String listUser = 'users?page=';
 }

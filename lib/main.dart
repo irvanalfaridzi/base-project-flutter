@@ -1,10 +1,12 @@
 import 'package:base_project/services/call_service.dart';
 import 'package:base_project/services/locator.dart';
 import 'package:base_project/services/navigator_service.dart';
+import 'package:base_project/ui/pages/home/bloc/home_bloc.dart';
 import 'package:base_project/ui/pages/pages.dart';
 import 'package:base_project/util/app_router.dart';
 import 'package:base_project/util/config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 // GetIt getIt = GetIt.instance;
@@ -29,15 +31,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppRouter router = AppRouter();
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Base Project',
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => HomeBloc()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Base Project Flutter',
+        theme: ThemeData(
+          primarySwatch: Colors.grey,
+        ),
+        navigatorKey: locator<NavigationService>().navigatorKey,
+        onGenerateRoute: router.routes,
       ),
-      navigatorKey: locator<NavigationService>().navigatorKey,
-      onGenerateRoute: router.routes,
-      // home: const SplashPage(),
     );
   }
 }

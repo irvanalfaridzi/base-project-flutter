@@ -1,4 +1,4 @@
-part of 'pages.dart';
+part of '../pages.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -33,7 +33,9 @@ class ProfilePage extends StatelessWidget {
                 );
               }
             }
-            return const CircularProgressIndicator();
+            return CircularProgressIndicator(
+              color: mainColor,
+            );
           },
         ),
       ),

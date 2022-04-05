@@ -1,4 +1,4 @@
-part of 'pages.dart';
+part of '../pages.dart';
 
 class BookmarkPage extends StatelessWidget {
   const BookmarkPage({Key? key}) : super(key: key);

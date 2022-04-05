@@ -1,3 +1,4 @@
+import 'package:base_project/data/model/models.dart';
 import 'package:base_project/util/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

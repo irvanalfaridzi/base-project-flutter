@@ -16,4 +16,19 @@ class UserRepository {
       throw Exception(Utility.handleError(e));
     }
   }
+
+  Future<ListUser> getListUser(String page) async {
+    try {
+      final response = await callService.connect(
+        '${Constant.listUser}$page',
+        {},
+        Constant.get,
+      );
+
+      ListUser userListData = listUserFromJson(json.encode(response.data));
+      return userListData;
+    } on DioError catch (e) {
+      throw Exception(Utility.handleError(e));
+    }
+  }
 }

@@ -1,7 +1,26 @@
-part of 'pages.dart';
+part of '../pages.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  HomeBloc _bloc = HomeBloc();
+
+  @override
+  void initState() {
+    _bloc = BlocProvider.of<HomeBloc>(context);
+    _bloc.add(GetRecommendationData());
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +154,7 @@ class HomeBody extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 32, bottom: 16),
               child: Text(
-                'Recommendation Job',
+                'Recommendation People',
                 style: GoogleFonts.dmSans(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -143,20 +162,45 @@ class HomeBody extends StatelessWidget {
               ),
             ),
 
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: mockRecommendationCount / 2 * 125,
-              child: GridView.count(
-                scrollDirection: Axis.vertical,
-                childAspectRatio: 1.4,
-                crossAxisCount: 2,
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 16,
-                children: List.generate(
-                  mockRecommendationCount,
-                  (index) => const BaseRecommendationCard(),
-                ),
-              ),
+            // BlocListener<HomeBloc, HomeState>(
+            //   listener: (context, state) {
+            //     // TODO: implement listener
+            //   },
+            //   child: Container(),
+            // )
+
+            BlocBuilder<HomeBloc, HomeState>(
+              builder: (context, state) {
+                if (state is HomeLoading) {
+                  return CircularProgressIndicator(
+                    color: mainColor,
+                  );
+                } else if (state is HomeFailed) {
+                  return showAlertMessage(
+                      context, 'Message', state.error, 'Close');
+                } else if (state is HomeSuccess) {
+                  return SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: state.data.perPage / 2 * 125,
+                    child: GridView.count(
+                      scrollDirection: Axis.vertical,
+                      childAspectRatio: 1.4,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 16,
+                      children: List.generate(
+                        state.data.perPage,
+                        (index) => BaseRecommendationCard(
+                          dataUser: state.data.data[index],
+                        ),
+                      ),
+                    ),
+                  );
+                }
+                return CircularProgressIndicator(
+                  color: mainColor,
+                );
+              },
             ),
           ],
         ),

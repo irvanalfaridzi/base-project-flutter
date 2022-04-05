@@ -1,4 +1,4 @@
-part of 'pages.dart';
+part of '../pages.dart';
 
 class MessagePage extends StatelessWidget {
   const MessagePage({Key? key}) : super(key: key);

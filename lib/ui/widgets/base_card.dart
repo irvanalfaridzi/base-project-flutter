@@ -126,7 +126,11 @@ class _BasePopularCardState extends State<BasePopularCard> {
 }
 
 class BaseRecommendationCard extends StatefulWidget {
-  const BaseRecommendationCard({Key? key}) : super(key: key);
+  final Data dataUser;
+  const BaseRecommendationCard({
+    Key? key,
+    required this.dataUser,
+  }) : super(key: key);
 
   @override
   State<BaseRecommendationCard> createState() => _BaseRecommendationCardState();
@@ -156,9 +160,11 @@ class _BaseRecommendationCardState extends State<BaseRecommendationCard> {
                   height: 32,
                   margin: const EdgeInsets.only(right: 8),
                   decoration: BoxDecoration(
-                    color: bgMainPageColor,
-                    borderRadius: BorderRadius.circular(6),
-                  ),
+                      color: bgMainPageColor,
+                      borderRadius: BorderRadius.circular(6),
+                      image: DecorationImage(
+                          image: NetworkImage(widget.dataUser.avatar),
+                          fit: BoxFit.cover)),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -166,7 +172,7 @@ class _BaseRecommendationCardState extends State<BaseRecommendationCard> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 1),
                       child: Text(
-                        'Tokopedia',
+                        widget.dataUser.firstName,
                         style: GoogleFonts.dmSans(
                           fontSize: 16,
                           color: blackColor,
@@ -188,12 +194,17 @@ class _BaseRecommendationCardState extends State<BaseRecommendationCard> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 19, bottom: 2),
-              child: Text(
-                'Sr. UI Designer',
-                style: GoogleFonts.dmSans(
-                  fontSize: 12,
-                  color: blackColor,
-                  fontWeight: FontWeight.w500,
+              child: SizedBox(
+                width: 156,
+                child: Text(
+                  widget.dataUser.email,
+                  style: GoogleFonts.dmSans(
+                    fontSize: 12,
+                    color: blackColor,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
                 ),
               ),
             ),

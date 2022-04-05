@@ -29,8 +29,10 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.0.1
   get_it: ^7.2.0
   google_fonts: ^2.3.1
 
