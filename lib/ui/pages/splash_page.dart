@@ -1,6 +1,7 @@
 part of 'pages.dart';
 
 class SplashPage extends StatelessWidget {
+  static const String routes = '/splash_page';
   const SplashPage({Key? key}) : super(key: key);
 
   @override
@@ -83,14 +84,7 @@ class SplashPage extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     height: 64,
                     onTap: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return const MainPage();
-                          },
-                        ),
-                      );
+                      global.navigate.navigateReplaceTo(MainPage.routes);
                     },
                     bodyButton: Text(
                       'Get Started',

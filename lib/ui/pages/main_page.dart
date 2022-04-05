@@ -1,6 +1,7 @@
 part of 'pages.dart';
 
 class MainPage extends StatefulWidget {
+  static const String routes = '/main_page';
   const MainPage({Key? key}) : super(key: key);
 
   @override

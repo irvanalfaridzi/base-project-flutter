@@ -1,6 +1,7 @@
 part of 'pages.dart';
 
 class DetailJobPage extends StatelessWidget {
+  static const String routes = '/detail_job_page';
   const DetailJobPage({Key? key}) : super(key: key);
 
   @override
