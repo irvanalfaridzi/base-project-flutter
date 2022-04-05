@@ -15,5 +15,12 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+Implement:
+- Google Font
+- Get It
+- Dio Package
+- Flutter Bloc State Management
+- Equatable
+
 Soon to be:
-- Implementation of Bloc for State Management 
+- Simple Registration & Login  
