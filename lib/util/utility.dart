@@ -18,13 +18,18 @@ class Utility {
         errorDescription = "Koneksi timeout saat menerima data dari server";
         break;
       case DioErrorType.response:
-        errorDescription =
-            "Received invalid status code: ${error.response?.statusCode}";
+        errorDescription = "${error.response?.data}";
         break;
       case DioErrorType.sendTimeout:
         errorDescription = "Connection timeout when send data to server";
         break;
     }
+    return errorDescription;
+  }
+
+  static String handleErrorString(String error) {
+    String errorDescription = error.replaceAll("Exception: {error: ", "");
+    errorDescription = errorDescription.replaceAll('}', "");
     return errorDescription;
   }
 }

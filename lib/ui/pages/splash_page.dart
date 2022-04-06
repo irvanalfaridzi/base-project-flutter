@@ -84,7 +84,7 @@ class SplashPage extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     height: 64,
                     onTap: () {
-                      global.navigate.navigateReplaceTo(MainPage.routes);
+                      globals.navigate.navigateReplaceTo(LoginPage.routes);
                     },
                     bodyButton: Text(
                       'Get Started',

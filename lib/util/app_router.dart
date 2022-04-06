@@ -19,6 +19,14 @@ class AppRouter {
     });
   }
 
+  Route navigateToLoginPage() {
+    return MaterialPageRoute(builder: (_) => const LoginPage());
+  }
+
+  Route navigateToSignupPage() {
+    return MaterialPageRoute(builder: (_) => const SignUpPage());
+  }
+
   Route routes(RouteSettings? settings) {
     if (Constant.showLog) debugPrint('Route = ${settings?.name}');
     switch (settings!.name) {
@@ -28,6 +36,10 @@ class AppRouter {
         return navigateToMainPage();
       case DetailJobPage.routes:
         return navigateToDetailJobPage();
+      case LoginPage.routes:
+        return navigateToLoginPage();
+      case SignUpPage.routes:
+        return navigateToSignupPage();
       default:
         return navigateToStartUp();
     }

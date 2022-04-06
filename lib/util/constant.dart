@@ -20,4 +20,6 @@ class Constant {
   //PATH ENDPOINT
   static const String singleUser = 'users/';
   static const String listUser = 'users?page=';
+  static const String login = 'login';
+  static const String register = 'register';
 }

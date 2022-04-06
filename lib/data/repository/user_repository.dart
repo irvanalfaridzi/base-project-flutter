@@ -31,4 +31,37 @@ class UserRepository {
       throw Exception(Utility.handleError(e));
     }
   }
+
+  Future<TokenUserResponse> loginUser(Map<String, dynamic> jsonSend) async {
+    try {
+      final response = await callService.connect(
+        Constant.login,
+        jsonSend,
+        Constant.post,
+      );
+
+      TokenUserResponse token =
+          tokenUserResponseFromJson(json.encode(response.data));
+      return token;
+    } on DioError catch (e) {
+      throw Exception(Utility.handleError(e));
+    }
+  }
+
+  Future<RegisterUserResponse> registerUser(
+      Map<String, dynamic> jsonSend) async {
+    try {
+      final response = await callService.connect(
+        Constant.register,
+        jsonSend,
+        Constant.post,
+      );
+
+      RegisterUserResponse data =
+          registerUserResponseFromJson(json.encode(response.data));
+      return data;
+    } on DioError catch (e) {
+      throw Exception(Utility.handleError(e));
+    }
+  }
 }

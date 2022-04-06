@@ -141,7 +141,7 @@ class HomeBody extends StatelessWidget {
                 itemBuilder: (BuildContext context, index) {
                   return BasePopularCard(
                     onTap: () {
-                      global.navigate.navigateTo(DetailJobPage.routes);
+                      globals.navigate.navigateTo(DetailJobPage.routes);
                     },
                     isSelected: index == 0 ? true : false,
                   );

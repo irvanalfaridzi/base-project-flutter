@@ -39,7 +39,8 @@ class AppInterceptors extends Interceptor {
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
-    Config.log('ERROR: [${err.response?.statusCode}]');
+    Config.log(
+        'ERROR: [${err.response?.statusCode}, ${err.response?.statusMessage}, ${err.type}, ${err.response?.data}]');
     if (err.message.contains(Constant.rTIMEOUT)) {
       err.type = DioErrorType.cancel;
       err.error = Utility.handleError(err);

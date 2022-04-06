@@ -2,6 +2,7 @@ import 'package:base_project/services/api_client.dart';
 import 'package:base_project/services/locator.dart';
 import 'package:base_project/util/config.dart';
 import 'package:base_project/util/constant.dart';
+import 'package:base_project/util/utility.dart';
 import 'package:dio/dio.dart';
 
 class CallService {
@@ -27,9 +28,9 @@ class CallService {
           response = await apiClient.post(path, json);
       }
       return response;
-    } catch (e) {
-      if (Constant.showLog) Config.log(e.toString());
-      throw Exception(e.toString());
+    } on DioError catch (e) {
+      if (Constant.showLog) Config.log(Utility.handleError(e));
+      throw Exception(Utility.handleError(e));
     }
   }
 }

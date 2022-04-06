@@ -1,4 +1,6 @@
+import 'package:base_project/util/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Widget showAlertMessage(
     BuildContext context, String header, String message, String textButton) {
@@ -18,18 +20,25 @@ Widget showAlertMessage(
                     padding: const EdgeInsets.only(bottom: 0),
                     child: Text(
                       header,
-                      style: const TextStyle(
+                      style: GoogleFonts.dmSans(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
+                        color: blackColor,
                       ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                   Expanded(
                     child: Center(
-                      child: Text(message,
-                          style: const TextStyle(fontSize: 14),
-                          textAlign: TextAlign.center),
+                      child: Text(
+                        message,
+                        style: GoogleFonts.dmSans(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: blackColor,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -39,7 +48,7 @@ Widget showAlertMessage(
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        color: Colors.black,
+                        color: mainColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
@@ -49,10 +58,10 @@ Widget showAlertMessage(
                           child: Center(
                             child: Text(
                               textButton,
-                              style: const TextStyle(
+                              style: GoogleFonts.dmSans(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
-                                color: Colors.white,
+                                color: whiteColor,
                               ),
                             ),
                           ),

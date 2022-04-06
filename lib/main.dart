@@ -1,5 +1,6 @@
 import 'package:base_project/services/locator.dart';
 import 'package:base_project/services/navigator_service.dart';
+import 'package:base_project/ui/pages/auth/bloc/auth_bloc.dart';
 import 'package:base_project/ui/pages/home/bloc/home_bloc.dart';
 import 'package:base_project/util/app_router.dart';
 import 'package:base_project/util/config.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => HomeBloc()),
+        BlocProvider(create: (context) => AuthBloc()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -123,3 +123,53 @@ class ListUser {
         "support": support.toJson(),
       };
 }
+
+TokenUserResponse tokenUserResponseFromJson(String str) =>
+    TokenUserResponse.fromJson(json.decode(str));
+
+String tokenUserResponseToJson(TokenUserResponse data) =>
+    json.encode(data.toJson());
+
+class TokenUserResponse {
+  TokenUserResponse({
+    required this.token,
+  });
+
+  String token;
+
+  factory TokenUserResponse.fromJson(Map<String, dynamic> json) =>
+      TokenUserResponse(
+        token: json["token"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "token": token,
+      };
+}
+
+RegisterUserResponse registerUserResponseFromJson(String str) =>
+    RegisterUserResponse.fromJson(json.decode(str));
+
+String registerUserResponseToJson(RegisterUserResponse data) =>
+    json.encode(data.toJson());
+
+class RegisterUserResponse {
+  RegisterUserResponse({
+    required this.id,
+    required this.token,
+  });
+
+  int id;
+  String token;
+
+  factory RegisterUserResponse.fromJson(Map<String, dynamic> json) =>
+      RegisterUserResponse(
+        id: json["id"],
+        token: json["token"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "token": token,
+      };
+}
