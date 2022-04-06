@@ -1,5 +1,4 @@
 import 'package:base_project/ui/pages/pages.dart';
-import 'package:base_project/util/config.dart';
 import 'package:base_project/util/constant.dart';
 import 'package:flutter/material.dart';
 

@@ -75,7 +75,6 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int mockRecommendationCount = 8;
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -161,13 +160,6 @@ class HomeBody extends StatelessWidget {
                 ),
               ),
             ),
-
-            // BlocListener<HomeBloc, HomeState>(
-            //   listener: (context, state) {
-            //     // TODO: implement listener
-            //   },
-            //   child: Container(),
-            // )
 
             BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {

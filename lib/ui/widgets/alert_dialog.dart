@@ -66,5 +66,5 @@ Widget showAlertMessage(
           ),
         );
       });
-  return CircularProgressIndicator();
+  return const CircularProgressIndicator();
 }
