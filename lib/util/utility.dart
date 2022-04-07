@@ -28,7 +28,8 @@ class Utility {
   }
 
   static String handleErrorString(String error) {
-    String errorDescription = error.replaceAll("Exception: {error: ", "");
+    String errorDescription = error.replaceAll("Exception: ", "");
+    errorDescription = errorDescription.replaceAll('{error: ', "");
     errorDescription = errorDescription.replaceAll('}', "");
     return errorDescription;
   }

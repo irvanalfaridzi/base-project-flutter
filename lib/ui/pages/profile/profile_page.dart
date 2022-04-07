@@ -7,6 +7,39 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final UserRepository _client = UserRepository();
     return Scaffold(
+      backgroundColor: bgMainPageColor,
+      appBar: AppBar(
+        backgroundColor: bgMainPageColor,
+        elevation: 0,
+        title: Align(
+          alignment: Alignment.centerRight,
+          child: InkWell(
+            onTap: () {
+              showAlertMessageLogout(
+                context,
+                "Message",
+                "Are you sure want to log out?",
+                "Yes",
+                () async {
+                  progressDialogFull(context);
+                  await Future.delayed(const Duration(milliseconds: 1000));
+                  await Prefs.setToken("");
+                  globals.navigate.navigateToRemove(SplashPage.routes);
+                },
+              );
+            },
+            borderRadius: BorderRadius.circular(8),
+            child: Padding(
+              padding:
+                  const EdgeInsets.only(top: 8.0, left: 8, bottom: 8, right: 4),
+              child: Icon(
+                Icons.logout,
+                color: mainColor,
+              ),
+            ),
+          ),
+        ),
+      ),
       body: Center(
         child: FutureBuilder<User?>(
           future: _client.getSingleUser('2'),
@@ -33,9 +66,7 @@ class ProfilePage extends StatelessWidget {
                 );
               }
             }
-            return CircularProgressIndicator(
-              color: mainColor,
-            );
+            return SpinKitCircle(color: mainColor, size: 50.0);
           },
         ),
       ),

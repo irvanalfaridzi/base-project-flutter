@@ -164,9 +164,7 @@ class HomeBody extends StatelessWidget {
             BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {
                 if (state is HomeLoading) {
-                  return CircularProgressIndicator(
-                    color: mainColor,
-                  );
+                  return SpinKitCircle(color: mainColor, size: 50.0);
                 } else if (state is HomeFailed) {
                   return showAlertMessage(
                       context, 'Message', state.error, 'Close');

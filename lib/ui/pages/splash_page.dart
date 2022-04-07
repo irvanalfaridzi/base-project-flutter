@@ -6,6 +6,48 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return AnimatedSplashScreen(
+      splash: Image.asset(
+        'assets/images/center-circle.png',
+      ),
+      nextScreen: const OnBoardingPage(),
+    );
+  }
+}
+
+class OnBoardingPage extends StatefulWidget {
+  const OnBoardingPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<OnBoardingPage> createState() => _OnBoardingPageState();
+}
+
+class _OnBoardingPageState extends State<OnBoardingPage> {
+  bool _isLoading = true;
+  checkUserLogged() async {
+    String token = await Prefs.getToken;
+
+    if (token != "") {
+      // add delay effect
+      await Future.delayed(const Duration(milliseconds: 1000));
+      globals.navigate.navigateToRemove(MainPage.routes);
+    }
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    checkUserLogged();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: whiteColor,
       body: Stack(
@@ -100,6 +142,22 @@ class SplashPage extends StatelessWidget {
                     height: 32,
                   ),
                 ],
+              ),
+            ),
+          ),
+
+          // loading screen
+          Visibility(
+            visible: _isLoading,
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              color: Colors.black.withOpacity(0.2),
+              child: Center(
+                child: SpinKitCircle(
+                  color: mainColor,
+                  size: 50.0,
+                ),
               ),
             ),
           )

@@ -1,12 +1,15 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:base_project/data/model/models.dart';
 import 'package:base_project/data/repository/repositories.dart';
 import 'package:base_project/ui/pages/auth/bloc/auth_bloc.dart';
 import 'package:base_project/ui/pages/home/bloc/home_bloc.dart';
 import 'package:base_project/ui/widgets/alert_dialog.dart';
 import 'package:base_project/ui/widgets/widgets.dart';
+import 'package:base_project/util/preferences.dart';
 import 'package:base_project/util/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:base_project/util/globalvar.dart' as globals;
 

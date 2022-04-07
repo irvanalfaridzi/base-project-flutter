@@ -42,6 +42,9 @@ class UserRepository {
 
       TokenUserResponse token =
           tokenUserResponseFromJson(json.encode(response.data));
+
+      Prefs.setToken(token.token);
+
       return token;
     } on DioError catch (e) {
       throw Exception(Utility.handleError(e));
@@ -59,6 +62,9 @@ class UserRepository {
 
       RegisterUserResponse data =
           registerUserResponseFromJson(json.encode(response.data));
+
+      Prefs.setToken(data.token);
+
       return data;
     } on DioError catch (e) {
       throw Exception(Utility.handleError(e));
