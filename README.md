@@ -21,6 +21,15 @@ Implement:
 - Dio Package
 - Flutter Bloc State Management
 - Equatable
+- Shared Preferences
+- Hit REST API https://reqres.in/
+
+Feature:
+- Login with an API service hitted
+- Register with an API service hitted
+- Read user that logged before with token
+- Get data from service with Dio HTTP client and Bloc State Management
 
 Soon to be:
-- Simple Registration & Login  
+- Bookmark screen
+- Message screen
