@@ -250,3 +250,88 @@ class _BaseRecommendationCardState extends State<BaseRecommendationCard> {
     );
   }
 }
+
+class BaseMessageCard extends StatelessWidget {
+  final UserData data;
+  const BaseMessageCard({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: whiteColor,
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 6,
+            color: blackColor.withOpacity(0.1),
+            offset: const Offset(3, 3),
+            spreadRadius: 1,
+          )
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                image: NetworkImage(
+                  data.avatar,
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      data.firstName,
+                      style: GoogleFonts.dmSans(
+                        fontSize: 16,
+                        color: blackColor,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      '12.54 AM',
+                      style: GoogleFonts.dmSans(
+                        fontSize: 11,
+                        color: blackColor,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Great, I will have a look',
+                  style: GoogleFonts.dmSans(
+                    fontSize: 12,
+                    color: blackColor.withOpacity(0.5),
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
