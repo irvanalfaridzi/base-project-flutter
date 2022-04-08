@@ -14,11 +14,11 @@ class User {
     required this.support,
   });
 
-  Data data;
+  UserData data;
   Support support;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        data: Data.fromJson(json["data"]),
+        data: UserData.fromJson(json["data"]),
         support: Support.fromJson(json["support"]),
       );
 
@@ -28,8 +28,8 @@ class User {
       };
 }
 
-class Data {
-  Data({
+class UserData {
+  UserData({
     required this.id,
     required this.email,
     required this.firstName,
@@ -43,7 +43,7 @@ class Data {
   String lastName;
   String avatar;
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory UserData.fromJson(Map<String, dynamic> json) => UserData(
         id: json["id"],
         email: json["email"],
         firstName: json["first_name"],
@@ -102,7 +102,7 @@ class ListUser {
   int perPage;
   int total;
   int totalPages;
-  List<Data> data;
+  List<UserData> data;
   Support support;
 
   factory ListUser.fromJson(Map<String, dynamic> json) => ListUser(
@@ -110,7 +110,8 @@ class ListUser {
         perPage: json["per_page"],
         total: json["total"],
         totalPages: json["total_pages"],
-        data: List<Data>.from(json["data"].map((x) => Data.fromJson(x))),
+        data:
+            List<UserData>.from(json["data"].map((x) => UserData.fromJson(x))),
         support: Support.fromJson(json["support"]),
       );
 

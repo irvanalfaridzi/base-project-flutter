@@ -1,3 +1,4 @@
+import 'package:base_project/data/model/models.dart';
 import 'package:base_project/ui/pages/pages.dart';
 import 'package:base_project/util/constant.dart';
 import 'package:flutter/material.dart';
@@ -27,9 +28,9 @@ class AppRouter {
     return MaterialPageRoute(builder: (_) => const SignUpPage());
   }
 
-  Route routes(RouteSettings? settings) {
-    if (Constant.showLog) debugPrint('Route = ${settings?.name}');
-    switch (settings!.name) {
+  Route routes(RouteSettings settings) {
+    if (Constant.showLog) debugPrint('Route = ${settings.name}');
+    switch (settings.name) {
       case "/":
         return navigateToStartUp();
       case MainPage.routes:

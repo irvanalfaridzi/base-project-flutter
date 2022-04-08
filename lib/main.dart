@@ -2,6 +2,7 @@ import 'package:base_project/services/locator.dart';
 import 'package:base_project/services/navigator_service.dart';
 import 'package:base_project/ui/pages/auth/bloc/auth_bloc.dart';
 import 'package:base_project/ui/pages/home/bloc/home_bloc.dart';
+import 'package:base_project/ui/pages/pages.dart';
 import 'package:base_project/util/app_router.dart';
 import 'package:base_project/util/config.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,9 @@ class MyApp extends StatelessWidget {
         ),
         navigatorKey: locator<NavigationService>().navigatorKey,
         onGenerateRoute: router.routes,
+        routes: {
+          DetailJobPage.routes: (context) => const DetailJobPage(),
+        },
       ),
     );
   }

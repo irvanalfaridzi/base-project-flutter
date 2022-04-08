@@ -12,7 +12,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<GetRecommendationData>((event, emit) async {
       emit(HomeLoading());
       try {
-        ListUser data = await repository.getListUser("2");
+        ListUser data1 = await repository.getListUser("1");
+        ListUser data2 = await repository.getListUser("2");
+        List<ListUser> data = [data1, data2];
         emit(HomeSuccess(data));
       } catch (e) {
         emit(HomeFailed(e.toString()));

@@ -11,6 +11,10 @@ class NavigationService {
     return navigatorKey.currentState!.pushNamed(routeName);
   }
 
+  Future<dynamic> navigateToWithArgument(String routeName, Object? data) {
+    return navigatorKey.currentState!.pushNamed(routeName, arguments: data);
+  }
+
   Future<dynamic> navigateReplaceTo(String routeName) {
     return navigatorKey.currentState!.pushReplacementNamed(routeName);
   }

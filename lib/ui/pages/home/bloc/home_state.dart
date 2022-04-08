@@ -12,7 +12,7 @@ class HomeInitial extends HomeState {}
 class HomeLoading extends HomeState {}
 
 class HomeSuccess extends HomeState {
-  final ListUser data;
+  final List<ListUser> data;
 
   const HomeSuccess(this.data);
 }

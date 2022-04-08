@@ -3,10 +3,12 @@ part of 'widgets.dart';
 class BasePopularCard extends StatefulWidget {
   final Function onTap;
   final bool isSelected;
+  final UserData data;
   const BasePopularCard({
     Key? key,
     required this.onTap,
     this.isSelected = false,
+    required this.data,
   }) : super(key: key);
 
   @override
@@ -52,6 +54,12 @@ class _BasePopularCardState extends State<BasePopularCard> {
                   decoration: BoxDecoration(
                     color: isSelected ? whiteColor : bgMainPageColor,
                     borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        widget.data.avatar,
+                      ),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Text(
@@ -78,7 +86,7 @@ class _BasePopularCardState extends State<BasePopularCard> {
             Padding(
               padding: const EdgeInsets.only(bottom: 4),
               child: Text(
-                'Dsgn Agency • Jakarta, Id ',
+                '${widget.data.firstName} • Jakarta, Id ',
                 style: GoogleFonts.dmSans(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
@@ -126,7 +134,7 @@ class _BasePopularCardState extends State<BasePopularCard> {
 }
 
 class BaseRecommendationCard extends StatefulWidget {
-  final Data dataUser;
+  final UserData dataUser;
   const BaseRecommendationCard({
     Key? key,
     required this.dataUser,
@@ -140,13 +148,20 @@ class _BaseRecommendationCardState extends State<BaseRecommendationCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 156,
-      height: 107,
+      // width: 156,
+      // height: 107,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: whiteColor,
-        borderRadius: BorderRadius.circular(10),
-      ),
+          color: whiteColor,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 6,
+              color: blackColor.withOpacity(0.1),
+              offset: const Offset(3, 3),
+              spreadRadius: 1,
+            )
+          ]),
       child: InkWell(
         onTap: () {},
         child: Column(

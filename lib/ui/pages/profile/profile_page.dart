@@ -47,7 +47,7 @@ class ProfilePage extends StatelessWidget {
             if (snapshot.hasData) {
               User? userInfo = snapshot.data;
               if (userInfo != null) {
-                Data userData = userInfo.data;
+                UserData userData = userInfo.data;
 
                 return Column(
                   mainAxisSize: MainAxisSize.min,

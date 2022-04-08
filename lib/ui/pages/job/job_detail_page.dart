@@ -2,10 +2,17 @@ part of '../pages.dart';
 
 class DetailJobPage extends StatelessWidget {
   static const String routes = '/detail_job_page';
-  const DetailJobPage({Key? key}) : super(key: key);
+  // final UserData data;
+  const DetailJobPage({
+    Key? key,
+    // required this.data,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Extract the arguments from the current ModalRoute
+    // settings and cast them as ScreenArguments.
+    final args = ModalRoute.of(context)!.settings.arguments as UserData;
     return Scaffold(
       backgroundColor: bgMainPageColor,
       body: SafeArea(
@@ -27,6 +34,10 @@ class DetailJobPage extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: whiteColor,
                           borderRadius: BorderRadius.circular(14),
+                          image: DecorationImage(
+                            image: NetworkImage(args.avatar),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                       Padding(
@@ -42,7 +53,7 @@ class DetailJobPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 16),
                         child: Text(
-                          'Jakarta, Indonesia',
+                          args.firstName,
                           style: GoogleFonts.dmSans(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,

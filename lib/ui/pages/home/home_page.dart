@@ -132,21 +132,44 @@ class HomeBody extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: 150,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 3,
-                itemBuilder: (BuildContext context, index) {
-                  return BasePopularCard(
-                    onTap: () {
-                      globals.navigate.navigateTo(DetailJobPage.routes);
-                    },
-                    isSelected: index == 0 ? true : false,
+            BlocBuilder<HomeBloc, HomeState>(
+              builder: (context, state) {
+                if (state is HomeLoading) {
+                  return SpinKitCircle(color: mainColor, size: 50.0);
+                } else if (state is HomeFailed) {
+                  return showAlertMessage(
+                      context, 'Message', state.error, 'Close');
+                } else if (state is HomeSuccess) {
+                  return SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: 150,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: state.data[0].perPage,
+                      itemBuilder: (BuildContext context, index) {
+                        return BasePopularCard(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              DetailJobPage.routes,
+                              arguments: state.data[0].data[index],
+                            );
+                            // globals.navigate.navigateToWithArgument(
+                            //   DetailJobPage.routes,
+                            //   state.data[0].data[index],
+                            // );
+                          },
+                          isSelected: index == 0 ? true : false,
+                          data: state.data[0].data[index],
+                        );
+                      },
+                    ),
                   );
-                },
-              ),
+                }
+                return CircularProgressIndicator(
+                  color: mainColor,
+                );
+              },
             ),
 
             /// Recommendation Job
@@ -171,7 +194,7 @@ class HomeBody extends StatelessWidget {
                 } else if (state is HomeSuccess) {
                   return SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    height: state.data.perPage / 2 * 125,
+                    height: state.data[1].perPage / 2 * 125,
                     child: GridView.count(
                       scrollDirection: Axis.vertical,
                       childAspectRatio: 1.4,
@@ -179,9 +202,9 @@ class HomeBody extends StatelessWidget {
                       crossAxisSpacing: 15,
                       mainAxisSpacing: 16,
                       children: List.generate(
-                        state.data.perPage,
+                        state.data[1].perPage,
                         (index) => BaseRecommendationCard(
-                          dataUser: state.data.data[index],
+                          dataUser: state.data[1].data[index],
                         ),
                       ),
                     ),
