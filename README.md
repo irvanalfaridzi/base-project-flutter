@@ -29,7 +29,8 @@ Feature:
 - Register with an API service hitted
 - Read user that logged before with token
 - Get data from service with Dio HTTP client and Bloc State Management
+- Search function from list data service
 
 Soon to be:
-- Bookmark screen
-- Message screen
+- Drawer menu screen
+- Notification screen
