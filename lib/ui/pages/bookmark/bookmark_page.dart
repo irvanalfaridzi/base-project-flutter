@@ -57,10 +57,9 @@ class BookmarkPage extends StatelessWidget {
                             id: 10,
                           ),
                           onTap: () {
-                            Navigator.pushNamed(
-                              context,
+                            globals.navigate.navigateToWithArgument(
                               DetailJobPage.routes,
-                              arguments: UserData(
+                              UserData(
                                 avatar:
                                     "https://reqres.in/img/faces/10-image.jpg",
                                 email: "byron.fields@reqres.in",
@@ -69,10 +68,6 @@ class BookmarkPage extends StatelessWidget {
                                 id: 10,
                               ),
                             );
-                            // globals.navigate.navigateToWithArgument(
-                            //   DetailJobPage.routes,
-                            //   state.data[0].data[index],
-                            // );
                           },
                         ),
                       ),

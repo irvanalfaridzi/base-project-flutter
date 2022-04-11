@@ -153,15 +153,8 @@ class _HomeBodyState extends State<HomeBody> {
                           child: BaseRecommendationCard(
                             dataUser: e,
                             onTap: () {
-                              Navigator.pushNamed(
-                                context,
-                                DetailJobPage.routes,
-                                arguments: e,
-                              );
-                              // globals.navigate.navigateToWithArgument(
-                              //   DetailJobPage.routes,
-                              //   state.data[0].data[index],
-                              // );
+                              globals.navigate.navigateToWithArgument(
+                                  DetailJobPage.routes, e);
                             },
                           ),
                         ),
@@ -202,15 +195,10 @@ class _HomeBodyState extends State<HomeBody> {
                             itemBuilder: (BuildContext context, index) {
                               return BasePopularCard(
                                 onTap: () {
-                                  Navigator.pushNamed(
-                                    context,
+                                  globals.navigate.navigateToWithArgument(
                                     DetailJobPage.routes,
-                                    arguments: state.data[0].data[index],
+                                    state.data[0].data[index],
                                   );
-                                  // globals.navigate.navigateToWithArgument(
-                                  //   DetailJobPage.routes,
-                                  //   state.data[0].data[index],
-                                  // );
                                 },
                                 isSelected: index == 0 ? true : false,
                                 data: state.data[0].data[index],
@@ -266,15 +254,10 @@ class _HomeBodyState extends State<HomeBody> {
                               (index) => BaseRecommendationCard(
                                 dataUser: state.data[1].data[index],
                                 onTap: () {
-                                  Navigator.pushNamed(
-                                    context,
+                                  globals.navigate.navigateToWithArgument(
                                     DetailJobPage.routes,
-                                    arguments: state.data[1].data[index],
+                                    state.data[1].data[index],
                                   );
-                                  // globals.navigate.navigateToWithArgument(
-                                  //   DetailJobPage.routes,
-                                  //   state.data[0].data[index],
-                                  // );
                                 },
                               ),
                             ),

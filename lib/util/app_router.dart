@@ -1,4 +1,3 @@
-import 'package:base_project/data/model/models.dart';
 import 'package:base_project/ui/pages/pages.dart';
 import 'package:base_project/util/constant.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +13,9 @@ class AppRouter {
     });
   }
 
-  Route navigateToDetailJobPage() {
+  Route navigateToDetailJobPage(final args) {
     return MaterialPageRoute(builder: (BuildContext context) {
-      return const DetailJobPage();
+      return DetailJobPage(data: args);
     });
   }
 
@@ -36,7 +35,7 @@ class AppRouter {
       case MainPage.routes:
         return navigateToMainPage();
       case DetailJobPage.routes:
-        return navigateToDetailJobPage();
+        return navigateToDetailJobPage(settings.arguments);
       case LoginPage.routes:
         return navigateToLoginPage();
       case SignUpPage.routes:

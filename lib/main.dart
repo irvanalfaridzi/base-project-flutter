@@ -42,9 +42,6 @@ class MyApp extends StatelessWidget {
         ),
         navigatorKey: locator<NavigationService>().navigatorKey,
         onGenerateRoute: router.routes,
-        routes: {
-          DetailJobPage.routes: (context) => const DetailJobPage(),
-        },
       ),
     );
   }
