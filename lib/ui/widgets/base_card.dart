@@ -135,9 +135,11 @@ class _BasePopularCardState extends State<BasePopularCard> {
 
 class BaseRecommendationCard extends StatefulWidget {
   final UserData dataUser;
+  final Function onTap;
   const BaseRecommendationCard({
     Key? key,
     required this.dataUser,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -163,7 +165,9 @@ class _BaseRecommendationCardState extends State<BaseRecommendationCard> {
             )
           ]),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          widget.onTap();
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -1,18 +1,22 @@
 part of 'widgets.dart';
 
 class SearchWidget extends StatefulWidget {
-  const SearchWidget({Key? key}) : super(key: key);
+  final TextEditingController controller;
+  final Function onChange;
+  const SearchWidget({
+    Key? key,
+    required this.controller,
+    required this.onChange,
+  }) : super(key: key);
 
   @override
   State<SearchWidget> createState() => _SearchWidgetState();
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
-  final TextEditingController searchController = TextEditingController();
-
   @override
   void dispose() {
-    searchController.dispose();
+    widget.controller.dispose();
     super.dispose();
   }
 
@@ -27,6 +31,10 @@ class _SearchWidgetState extends State<SearchWidget> {
           borderRadius: BorderRadius.circular(14),
         ),
         child: TextFormField(
+          controller: widget.controller,
+          onChanged: (value) {
+            widget.onChange(value);
+          },
           style: GoogleFonts.dmSans(
             fontSize: 14,
             fontWeight: FontWeight.w400,
