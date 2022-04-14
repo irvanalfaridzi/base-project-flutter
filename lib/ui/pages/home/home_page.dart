@@ -6,6 +6,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const BaseDrawer(),
       appBar: homeAppbar(),
       body: const HomeBody(),
     );
@@ -15,36 +16,39 @@ class HomePage extends StatelessWidget {
     return AppBar(
       backgroundColor: bgMainPageColor,
       elevation: 0,
-      titleSpacing: 24,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            width: 32,
-            height: 32,
-            padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: whiteColor,
+      leading: Builder(
+        builder: (BuildContext context) {
+          return IconButton(
+            icon: Container(
+              width: 32,
+              height: 32,
+              padding: const EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: whiteColor,
+              ),
+              child: Image.asset(
+                'assets/images/ic_category.png',
+              ),
             ),
-            child: Image.asset(
-              'assets/images/ic_category.png',
-            ),
-          ),
-          Container(
-            width: 32,
-            height: 32,
-            padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: whiteColor,
-            ),
-            child: Image.asset(
-              'assets/images/ic_notification.png',
-            ),
-          ),
-        ],
+            onPressed: () => Scaffold.of(context).openDrawer(),
+            tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+          );
+        },
       ),
+      actions: [
+        Container(
+          margin: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: whiteColor,
+          ),
+          child: Image.asset(
+            'assets/images/ic_notification.png',
+          ),
+        ),
+      ],
     );
   }
 }

@@ -7,9 +7,9 @@ class AppRouter {
     return MaterialPageRoute(builder: (_) => const SplashPage());
   }
 
-  Route navigateToMainPage() {
+  Route navigateToMainPage(final args) {
     return MaterialPageRoute(builder: (BuildContext context) {
-      return const MainPage();
+      return MainPage(selectedPage: args);
     });
   }
 
@@ -33,7 +33,7 @@ class AppRouter {
       case "/":
         return navigateToStartUp();
       case MainPage.routes:
-        return navigateToMainPage();
+        return navigateToMainPage(settings.arguments);
       case DetailJobPage.routes:
         return navigateToDetailJobPage(settings.arguments);
       case LoginPage.routes:

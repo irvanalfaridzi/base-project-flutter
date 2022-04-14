@@ -2,7 +2,12 @@ part of 'pages.dart';
 
 class MainPage extends StatefulWidget {
   static const String routes = '/main_page';
-  const MainPage({Key? key}) : super(key: key);
+
+  final int selectedPage;
+  const MainPage({
+    Key? key,
+    this.selectedPage = 0,
+  }) : super(key: key);
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -16,6 +21,12 @@ class _MainPageState extends State<MainPage> {
     const MessagePage(),
     const ProfilePage(),
   ];
+
+  @override
+  void initState() {
+    selectedPage = widget.selectedPage;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

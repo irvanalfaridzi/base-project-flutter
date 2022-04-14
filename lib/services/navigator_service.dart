@@ -21,7 +21,17 @@ class NavigationService {
 
   Future<dynamic> navigateToRemove(String routeName) {
     return navigatorKey.currentState!.pushNamedAndRemoveUntil(
-        routeName, (Route route) => false,
-        arguments: false);
+      routeName,
+      (Route route) => false,
+      arguments: false,
+    );
+  }
+
+  Future<dynamic> navigateToRemoveWithArg(String routeName, Object? args) {
+    return navigatorKey.currentState!.pushNamedAndRemoveUntil(
+      routeName,
+      (Route route) => false,
+      arguments: args,
+    );
   }
 }

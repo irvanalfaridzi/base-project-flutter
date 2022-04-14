@@ -32,7 +32,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     if (token != "") {
       // add delay effect
       await Future.delayed(const Duration(milliseconds: 1000));
-      globals.navigate.navigateToRemove(MainPage.routes);
+      globals.navigate.navigateToRemoveWithArg(MainPage.routes, 0);
     }
 
     setState(() {
