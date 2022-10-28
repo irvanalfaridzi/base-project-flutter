@@ -2,6 +2,8 @@
 
 This app created with Flutter version 2.10.4 with case study about Find Your Dream Job App
 
+https://user-images.githubusercontent.com/44092368/198570368-fb5d0ddd-554d-459f-aaaa-5b0e0e226bf2.mp4
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
